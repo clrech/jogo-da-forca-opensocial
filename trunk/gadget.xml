@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs
+		author="Cleber Rech"
+		title="Jogo da Forca"
+		width="835">
+		<Locale messages="i18n/ALL_ALL.xml?x1" />
+		
+		<Optional feature="maximize" />
+
+		<Require feature="opensocial-0.9" />
+		<Require feature="opensocial-data" />
+		<Require feature="opensocial-templates">
+			<Param name="process-on-server">true</Param>
+		</Require>
+		<Require feature="dynamic-height" />
+		<Require feature="views" />
+	</ModulePrefs>
+	
+	<Content type="html" view="profile,home,canvas">
+	<![CDATA[
+		<link href="http://localhost:8123/jogo-da-velha-opensocial/style.css?xxxxxxxx" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8123/jogo-da-velha-opensocial/jogo-da-velha.js?xxxxxxxxxxxxxxxxxxx1"></script>
+		<script type="text/javascript" src="http://localhost:8123/jogo-da-velha-opensocial/opensocial.js?xxxxxx1"></script>
+	]]>
+	</Content>
+	
+	<Content type="html" view="home,profile">
+	<![CDATA[
+		<script xmlns:os="http://ns.opensocial.org/2008/markup" type="text/os-data">
+			<os:PeopleRequest key="dono" userId="@owner" />
+			<os:DataRequest key="pontuacao" method="appdata.get" userId="@owner" fields="*" />
+		</script>
+		
+		<div class="home profile">
+			<div id="container">
+				<div id="forca">
+					<script type="text/os-template">
+						<div id="pontuacao" if="${pontuacao[dono.id]}">
+							<div id="pontos">__MSG_pontos__ <span class="pontuacao">${pontuacao[dono.id]['pontos']}</span></div>
+							<div id="estatisticas">
+								<div id="salvos">__MSG_amigos_salvos__ <span class="pontuacao">${pontuacao[dono.id]['salvos']}</span></div>
+								<div id="enforcados">__MSG_amigos_enforcados__ <span class="pontuacao">${pontuacao[dono.id]['enforcados']}</span></div>
+							</div>
+						</div>
+						
+						<div id="pontuacao" if="${!pontuacao[dono.id]}">
+							<div id="pontos">__MSG_pontos__ <span class="pontuacao"></span></div>
+							<div id="estatisticas">
+								<div id="salvos">__MSG_amigos_salvos__ <span class="pontuacao"></span></div>
+								<div id="enforcados">__MSG_amigos_enforcados__ <span class="pontuacao"></span></div>
+							</div>
+						</div>
+					</script>
+					
+					<div id="ir-para-jogo" class="botao">__MSG_ir_para_jogo__</div>
+				</div>
+			</div>
+		</div>
+	]]>
+	</Content>
+
+	<Content type="html" view="canvas">
+	<![CDATA[
+		<div class="canvas">
+			<div id="container">
+				<div id="container-inner">
+					<div id="cabecalho">
+						<div id="pontuacao">
+							<div id="pontos">__MSG_pontos__ <span class="pontuacao"></span></div>
+							<div id="estatisticas">
+								<div id="salvos">__MSG_amigos_salvos__ <span class="pontuacao"></span></div>
+								<div id="enforcados">__MSG_amigos_enforcados__ <span class="pontuacao"></span></div>
+							</div>
+						</div>
+						<div id="convidar" class="botao" title="__MSG_convidar_amigos__ (Ctrl + S)">__MSG_convidar_amigos__</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div id="area-jogo">
+						<div style="float: left">
+							<div id="forca">
+								<div id="enforcado">
+									<div id="enforcado1" class="enforcado"></div>
+									<div id="enforcado2" class="enforcado"></div>
+									<div id="enforcado3" class="enforcado"></div>
+									<div id="enforcado4" class="enforcado"></div>
+									<div id="enforcado5" class="enforcado"></div>
+									<div id="enforcado6" class="enforcado"></div>
+								</div>
+							</div>
+							<div id="novo-jogo" class="botao" title="__MSG_novo_amigo__ (Ctrl + N)">__MSG_novo_amigo__</div>
+						</div>
+						
+						<div id="nome"></div>
+						<div id="iniciar-jogo" class="botao">__MSG_iniciar_jogo__</div>
+						<div id="navegar" class="mensagem info">__MSG_navegar__</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					<div id=sucesso>__MSG_sucesso__</div>
+					<div id="game-over">__MSG_game_over__</div>
+					<div id="letras-digitadas">__MSG_comece_digitar__</div>
+					
+					<a href="http://code.google.com/p/jogo-da-velha-opensocial" id="ajuda" target="_blank" title="__MSG_ajuda__">__MSG_ajuda__</a>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<div id="passaro"></div>
+		</div>
+	]]>
+	</Content>
+</Module>

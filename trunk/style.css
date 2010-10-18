@@ -1,0 +1,328 @@
+body {
+	background-image: url("img/body.png");
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 13px;
+	margin: 0;
+}
+
+#container {
+	background-image: url("img/fundo.png?1");
+	background-position: top center;
+	background-repeat: repeat-x;
+}
+
+.home #container,.profile #container {
+	background-position: left bottom;
+	padding-top: 15px;
+}
+
+#container-inner {
+	padding: 10px;
+	margin: auto;
+	max-width: 835px;
+	min-height: 400px;
+}
+
+#cabecalho {
+	height: 60px;
+}
+
+#pontuacao {
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.85);
+	box-shadow: 3px 3px 8px #AAAAAA;
+	border: 1px solid #CCCCCC;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF);
+	float: left;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-filter:	"progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF, endColorstr=#CCFFFFFF)";
+	-moz-box-shadow: 3px 3px 8px #AAAAAA;
+}
+
+.home #pontuacao {
+	float: none;
+	margin: auto;
+	max-width: 160px;
+	text-align: center;
+	width: 80%;
+}
+
+#pontos {
+	font-size: 18px;
+	padding: 15px;
+}
+
+.canvas #pontos {
+	display: none;
+	float: left;
+} 
+
+#pontos .pontuacao {
+	color: #00AA00;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#estatisticas {
+	font-size: 13px;
+	padding: 10px;
+}
+
+.canvas #estatisticas {
+	display: none;
+	float: left;
+} 
+
+#estatisticas .pontuacao {
+	font-weight: bold;
+}
+
+#salvos {
+	color: #0000AA;
+}
+
+#enforcados {
+	color: #AA0000;
+}
+
+#convidar {
+	display: none;
+	float: right;
+}
+
+#area-jogo {
+	margin-top: 80px;
+}
+
+#forca {
+	background-image: url("img/forca.png?1");
+	background-repeat: no-repeat;
+	height: 223px;
+	width: 165px;
+}
+
+.home #forca {
+	height: auto;
+	width: 100%;
+}
+
+.enforcado {
+	background-repeat: no-repeat;
+	display: none;
+	position: relative;
+}
+
+#enforcado1 {
+	background-image: url("img/enforcado1.png");
+	height: 64px;
+	left: 75px;
+	top: 29px;
+	width: 64px;
+}
+
+#enforcado2 {
+	background-image: url("img/enforcado2.png");
+	height: 55px;
+	left: 104px;
+	top: 28px;
+	width: 8px;
+}
+
+#enforcado3,#enforcado4,#enforcado5,#enforcado6 {
+	height: 31px;
+	width: 25px;
+}
+
+#enforcado3 {
+	background-image: url("img/enforcado3.png");
+	left: 79px;
+	top: -27px;
+}
+
+#enforcado4 {
+	background-image: url("img/enforcado4.png");
+	left: 112px;
+	top: -58px;
+}
+
+#enforcado5 {
+	background-image: url("img/enforcado5.png");
+	left: 79px;
+	top: -46px;
+}
+
+#enforcado6 {
+	background-image: url("img/enforcado6.png");
+	left: 112px;
+	top: -77px;
+}
+
+#nome {
+	display: none;
+	margin-left: 195px;
+	margin-top: -55px;
+}
+
+#nome .linha {
+	height: 50px;
+}
+
+.letra {
+	background-color: #FFFFFF;
+	border: 2px solid #000000;
+	float: left;
+	font-size: 18px;
+	height: 23px;
+	margin-right: 5px;
+	margin-top: 5px;
+	padding: 5px;
+	width: 20px;
+	text-align: center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.acerto {
+	border: 2px solid #0000FF;
+	box-shadow: 0px 0px 5px #00F;
+	-moz-box-shadow: 0px 0px 5px #00F;
+}
+
+#letras-digitadas {
+	background-color: #FFFFFF;
+	border: 2px solid #FF0000;
+	color: #FF0000;
+	display: none;
+	font-size: 20px;
+	font-weight: bold;
+	height: 25px;
+	margin: 15px auto;
+	padding: 10px;
+	text-align: center;
+	width: 400px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#iniciar-jogo {
+	font-size: 30px;
+	margin: auto;
+	text-shadow: 1px 1px 1px #000000;
+	width: 300px;
+	-moz-box-shadow: 1px 1px 1px #000000;
+	-webkit-box-shadow: 1px 1px 1px #000000;
+}
+
+#navegar {
+	display: none;
+	font-size: 16px;
+	margin-left: 160px;
+	margin-top: 50px;
+	padding: 20px;
+	text-align: center;
+}
+
+#novo-jogo {
+	background-color: #12931E;
+	border: 1px solid #01820D;
+	display: none;
+	margin-top: 10px;
+	width: 140px;
+}
+
+#novo-jogo:hover {
+	background-color: #01820D;
+}
+
+.ajax-loader {
+	background-image: url("img/ajax-loader.gif?xx");
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 150px;
+}
+
+#ajuda {
+	color: #FFFFFF;
+	float: right;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.botao {
+	background-color: #4082AE;
+	border: 1px solid #30719D;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 10px;
+	text-align: center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.botao:hover {
+	background-color: #30719D;
+}
+
+#sucesso,#game-over {
+	display: none;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0 auto 15px;
+	text-align: center;
+	text-shadow: 0 -1px 3px #000000;
+	width: 500px;
+}
+
+#sucesso {
+	color: #00ECF9;
+}
+
+#game-over {
+	color: #FFAA00;
+}
+
+.mensagem {
+	border: 1px solid;
+	font-weight: bold;
+	margin: 5px auto;
+	padding: 5px;
+	text-align: center;
+	width: 80%;
+}
+
+.info {
+	background-color: #DDDDFF;
+	border-color: #0000FF;
+	color: #0000FF;
+}
+
+.advertencia {
+	background-color: #FFFFDD;
+	border-color: #FF8800;
+	color: #FF8800;
+}
+
+.erro {
+	background-color: #FFDDDD;
+	border-color: #FF0000;
+	color: #FF0000;
+}
+
+#ir-para-jogo {
+	display: none;
+	margin: 20px auto;
+	width: 100px;
+}
+
+#passaro {
+	background-image: url("img/passaro.gif");
+	background-repeat: no-repeat;
+	display: none;
+	height: 70px;
+	left: 10px;
+	position: absolute;
+	top: 0;
+	width: 70px;
+}

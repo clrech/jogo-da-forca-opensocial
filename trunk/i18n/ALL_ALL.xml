@@ -1,0 +1,30 @@
+<messagebundle>
+	<msg name="iniciar_jogo">Clique aqui para<br />começar a jogar!</msg>
+	<msg name="pontos">Pontos:</msg>
+	<msg name="amigos_salvos">Amigos salvos:</msg>
+	<msg name="amigos_enforcados">Amigos enforcados:</msg>
+	<msg name="convidar_amigos">Convidar os amigos</msg>
+	<msg name="novo_amigo">Novo Amigo</msg>
+	<msg name="sucesso">Parabéns!<br />Você salvou o seu amigo.<br />Tente salvar outro.</msg>
+	<msg name="game_over">Você enforcou o seu amigo!<br />Tente salvar outro.</msg>
+	<msg name="ajuda">Ajuda</msg>
+	<msg name="comece_digitar">Comece a digitar!</msg>
+	<msg name="erro_buscar_amigo">Ops! Não foi possível escolher um amigo para você brincar. <a href="#" onclick="jogo.recarregar()">Clique aqui</a> para tentar novamente ou volte mais tarde.</msg>
+	<msg name="nao_ha_amigos">Ops! Voce não tem nenhum amigo. Adicione algum amigo para poder brincar.</msg>
+	<msg name="amigos_google">Para adicionar um amigo no Gmail, crie um contato ou adicione no <a href="https://mail.google.com/mail/?shva=1#contacts/group/d/Friends" title="Grupo Amigos" target="_blank">grupo Amigos</a>.<br />Se você não tem o Gmail, use o <a href="http://www.google.com/contacts?hl=pt_BR" title="Gerenciador de contatos" target="_blank">gerenciador de contatos</a>.</msg>
+	<msg name="amigos_orkut"><a href="http://www.orkut.com.br/Main#FindFriends" title="Encontrar amigos" target="_blank">Clique aqui</a> para encontrar algum amigo.</msg>
+	<msg name="amigo_sem_nome">Ops! Parece que o seu amigo não tem nome! Estranho, não?</msg>
+	<msg name="requisicao_compartilhamento">Salve os seus amigos da forca!</msg>
+	<msg name="email_nao_enviado">Não foi possível enviar o e-mail.</msg>
+	<msg name="atividade_nao_criada">Não foi possível criar a atividade.</msg>
+	<msg name="email_titulo">Salve os seus amigos da forca!</msg>
+	<msg name="email_corpo">No <strong>Jogo da Forca</strong> você tem que tentar adivinhar o nome dos seus amigos antes que seja tarde demais. Vai encarar?</msg>
+	<msg name="atividade_titulo_sucesso">salvou <strong>${amigo}</strong> da forca</msg>
+	<msg name="atividade_titulo_game_over">enforcou <strong>${amigo}</strong></msg>
+	<msg name="atividade_corpo_sucesso"><strong>Pontuação de ${dono}:</strong><br />${pontuacao.salvos} amigo(s) salvo(s)<br />${pontuacao.enforcados} amigo(s) enforcados(s)<br />Pontos totais: <strong>${pontuacao.pontos}</strong></msg>
+	<msg name="atividade_corpo_game_over"><strong>Pontuação de ${dono}:</strong><br />${pontuacao.salvos} amigo(s) salvo(s)<br />${pontuacao.enforcados} amigo(s) enforcados(s)<br />Pontos totais: <strong>${pontuacao.pontos}</strong></msg>
+	<msg name="navegar"><a href="#" title="Jogar a forca">Clique aqui</a> para começar a jogar.<br /><em>Você deve ter o aplicativo instalado para jogar.</em></msg>
+	<msg name="erro_indefinido">Erro indefinido</msg>
+	<msg name="ir_para_jogo">Jogar</msg>
+	<msg name=""></msg>
+</messagebundle> 
