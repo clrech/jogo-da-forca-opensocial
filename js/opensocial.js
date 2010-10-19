@@ -10,11 +10,18 @@ jogo.carregarDados = function() {
 
 		if (jogo.visualizador && jogo.visualizador.isOwner()) {
 			jogo.carregarDonoAmigos();
+			
+			$('#iniciar-jogo').click(function() {
+				$('#iniciar-jogo, #nome, #novo-jogo, #letras-digitadas').toggle('slow', function() {
+					gadgets.window.adjustHeight();
+				});
+			});
+			$('#iniciar-jogo').show();
 		} else {
-			$('#navegar').show();
-			$('#navegar a').click(function() {
+			$('#navegar').click(function() {
 				gadgets.views.requestNavigateTo(new gadgets.views.View('canvas'));
 			});
+			$('#navegar').show();
 		}
 	});
 };
@@ -86,7 +93,7 @@ jogo.carregarNovoAmigo = function() {
 	var parametros = {};
 	parametros[opensocial.DataRequest.PeopleRequestFields.FIRST] = Math.floor(Math.random() * jogo.numeroAmigos);
 	parametros[opensocial.DataRequest.PeopleRequestFields.MAX] = 1;
-	parametros[opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [ opensocial.Person.Field.NAME, opensocial.Person.Field.THUMBNAIL_URL ];
+	parametros[opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [ opensocial.Person.Field.NAME, opensocial.Person.Field.THUMBNAIL_URL, opensocial.Person.Field.PROFILE_URL ];
 
 	var requisicao = opensocial.newDataRequest();
 	var amigos = requisicao.newFetchPeopleRequest(idAmigos, parametros);
@@ -144,7 +151,13 @@ jogo.carregarNovoAmigo = function() {
 jogo.atividade.criar = function(sucesso) {
 	log('jogo.atividade.criar(sucesso=' + sucesso + ')');
 	var titulo = sucesso ? 'atividade_titulo_sucesso' : 'atividade_titulo_game_over';
-	var corpo = sucesso ? 'atividade_corpo_sucesso' : 'atividade_corpo_game_over';
+	var corpo = [ '<table><tr><td style="width: 100px;">',
+	              '<img src="' + (sucesso ? jogo.img.atividade.salvo : jogo.img.atividade.enforcado) + '" height="75" width="58">',
+	              '</td><td style="width: 180px;">',
+	              '<span style="font-size: large; font-weight: bold;">Pontos: ${pontuacao.pontos}</span></td><td>',
+	              '<span style="color: rgb(0, 0, 170); font-size: large;">Amigos salvos: ${pontuacao.salvos}</span><br>',
+	              '<span style="color: rgb(170, 0, 0); font-size: large;">Amigos enforcados: ${pontuacao.enforcados}</span>',
+	              '</td></tr></table>' ].join('');
 
 	var parametrosTemplate = {};
 	parametrosTemplate.dono = jogo.dono.getDisplayName();
@@ -152,19 +165,18 @@ jogo.atividade.criar = function(sucesso) {
 	parametrosTemplate.pontuacao = jogo.pontuacao;
 
 	var parametros = {};
-	parametros[opensocial.Activity.Field.BODY] = jogo.aplicarParametros(prefs.getMsg(corpo));
+	parametros[opensocial.Activity.Field.BODY] = jogo.aplicarParametros(corpo);
 	parametros[opensocial.Activity.Field.BODY_ID] = corpo;
-	parametros[opensocial.Activity.Field.STREAM_FAVICON_URL] = jogo.URL + 'favicon.ico';
+	parametros[opensocial.Activity.Field.STREAM_FAVICON_URL] = jogo.img.icone;
 	parametros[opensocial.Activity.Field.TEMPLATE_PARAMS] = parametrosTemplate;
-	parametros[opensocial.Activity.Field.TITLE] = jogo.aplicarParametros(prefs.getMsg(titulo));
+	parametros[opensocial.Activity.Field.TITLE] = jogo.aplicarParametros(prefs.getMsg(titulo), { link: true });
 	parametros[opensocial.Activity.Field.TITLE_ID] = titulo;
-	// http://wiki.opensocial.org/index.php?title=Container_Activity_filters
 
 	var atividade = opensocial.newActivity(parametros);
 	opensocial.requestCreateActivity(atividade, opensocial.CreateActivityPriority.HIGH, function(resposta) {
 		log(resposta);
 		if (resposta.hadError()) {
-			jogo.mensagem.erro('atividade_nao_criada', true, resposta);
+			//jogo.mensagem.erro('atividade_nao_criada', true, resposta);
 		}
 	});
 }
@@ -233,7 +245,7 @@ jogo.pontos.salvar = function() {
 	requisicao.send(function(resposta) {
 		log(resposta);
 		if (resposta.hadError()) {
-			jogo.mensagem.erro(resposta);
+			//jogo.mensagem.erro(resposta);
 		}
 	});
 
@@ -253,7 +265,7 @@ jogo.compartilhar = function() {
 		opensocial.requestSendMessage('VIEWER_FRIENDS', mensagem, function(resposta) {
 			log(resposta);
 			if (resposta.hadError()) {
-				jogo.mensagem.erro('email_nao_enviado', true, resposta);
+				//jogo.mensagem.erro('email_nao_enviado', true, resposta);
 			}
 		});
 
@@ -264,14 +276,19 @@ jogo.compartilhar = function() {
 	opensocial.requestShareApp('VIEWER_FRIENDS', motivo, function(resposta) {
 		log(resposta);
 		if (resposta.hadError()) {
-			jogo.mensagem.erro(resposta);
+			//jogo.mensagem.erro(resposta);
 		}
 	});
 };
 
-jogo.aplicarParametros = function(str) {
+jogo.aplicarParametros = function(str, parametros) {
+	if (parametros && parametros.link && jogo.amigo.getField(opensocial.Person.Field.PROFILE_URL)) {
+		str = str.replace('${amigo}', '<a href="' + jogo.amigo.getField(opensocial.Person.Field.PROFILE_URL) + '">' + jogo.amigo.getDisplayName() + '</a>');
+	} else {
+		str = str.replace('${amigo}', jogo.amigo.getDisplayName());
+	}
+	
 	str = str.replace('${dono}', jogo.dono.getDisplayName());
-	str = str.replace('${amigo}', jogo.amigo.getDisplayName());
 	str = str.replace('${pontuacao.salvos}', jogo.pontuacao.salvos);
 	str = str.replace('${pontuacao.enforcados}', jogo.pontuacao.enforcados);
 	str = str.replace('${pontuacao.pontos}', jogo.pontuacao.pontos);

@@ -2,12 +2,27 @@
 <Module>
 	<ModulePrefs
 		author="Cleber Rech"
-		title="Jogo da Forca"
+		author_aboutme="Desenvolvedor de software"
+		author_email="clrech@gmail.com"
+		author_link="http://cleber.net.br"
+		author_location="Paraná, Brasil"
+		author_photo="http://cleber.net.br/sites/default/files/images/avatar-gadgets.png"
+		author_quote="Quem salva uma vida salva o mundo inteiro"
+		category="games"
+		description="__MSG_descricao__"
+		screenshot="http://jogo-forca.appspot.com/img/screenshot.png"
+		thumbnail="http://jogo-forca.appspot.com/img/thumbnail.png"
+		title="__MSG_titulo__"
+		title_url="http://cleber.net.br/labs/jogo-da-forca"
 		width="835">
-		<Locale messages="i18n/ALL_ALL.xml?x1" />
+		<Icon>http://jogo-forca.appspot.com/favicon.ico</Icon>
+		<Link href="http://jogo-forca.appspot.com/favicon.ico" rel="icon" />
+		
+		<Locale messages="http://jogo-forca.appspot.com/i18n/ALL_ALL.xml" />
 		
 		<Optional feature="maximize" />
 
+		<Require feature="com.google.gadgets.analytics" />
 		<Require feature="opensocial-0.9" />
 		<Require feature="opensocial-data" />
 		<Require feature="opensocial-templates">
@@ -19,11 +34,13 @@
 	
 	<Content type="html" view="profile,home,canvas">
 	<![CDATA[
-		<link href="http://localhost:8123/jogo-da-velha-opensocial/style.css?xxxxxxxx" rel="stylesheet" type="text/css" />
+		<!-- ALm6fM2o2jHFdLh658igBsR4PpmyKqhAyVsKIL8leFIX0bQCYb9gCkl9XttoANGLKqBgMgou+aYQvGsLUleLPPw7rLXPJApqvpdjdbDhFft5dpVrqRLhbkikIsGcw3H0pzw2I2yANuXw -->
+		
+		<link href="http://jogo-forca.appspot.com/css/style.css" rel="stylesheet" type="text/css" />
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script type="text/javascript" src="http://localhost:8123/jogo-da-velha-opensocial/jogo-da-velha.js?xxxxxxxxxxxxxxxxxxx1"></script>
-		<script type="text/javascript" src="http://localhost:8123/jogo-da-velha-opensocial/opensocial.js?xxxxxx1"></script>
+		<script type="text/javascript" src="http://jogo-forca.appspot.com/js/jogo-da-forca.js"></script>
+		<script type="text/javascript" src="http://jogo-forca.appspot.com/js/opensocial.js"></script>
 	]]>
 	</Content>
 	
@@ -37,7 +54,7 @@
 		<div class="home profile">
 			<div id="container">
 				<div id="forca">
-					<script type="text/os-template">
+					<script type="text/os-template" xmlns:os="http://ns.opensocial.org/2008/markup" xmlns:osx="http://ns.opensocial.org/2009/extensions">
 						<div id="pontuacao" if="${pontuacao[dono.id]}">
 							<div id="pontos">__MSG_pontos__ <span class="pontuacao">${pontuacao[dono.id]['pontos']}</span></div>
 							<div id="estatisticas">
@@ -46,16 +63,19 @@
 							</div>
 						</div>
 						
-						<div id="pontuacao" if="${!pontuacao[dono.id]}">
+						<div id="pontuacao" if="${!pontuacao[dono.id]}" style="display: none;">
 							<div id="pontos">__MSG_pontos__ <span class="pontuacao"></span></div>
 							<div id="estatisticas">
 								<div id="salvos">__MSG_amigos_salvos__ <span class="pontuacao"></span></div>
 								<div id="enforcados">__MSG_amigos_enforcados__ <span class="pontuacao"></span></div>
 							</div>
 						</div>
+						
+						<div id="ir-para-jogo" class="botao">
+							<osx:NavigateToApp>__MSG_ir_para_jogo__</osx:NavigateToApp>
+							<a style="display: none;">__MSG_ir_para_jogo__</a>
+						</div>
 					</script>
-					
-					<div id="ir-para-jogo" class="botao">__MSG_ir_para_jogo__</div>
 				</div>
 			</div>
 		</div>
@@ -75,7 +95,7 @@
 								<div id="enforcados">__MSG_amigos_enforcados__ <span class="pontuacao"></span></div>
 							</div>
 						</div>
-						<div id="convidar" class="botao" title="__MSG_convidar_amigos__ (Ctrl + S)">__MSG_convidar_amigos__</div>
+						<div id="convidar" class="botao" title="__MSG_convidar_amigos__ (Ctrl + Q)">__MSG_convidar_amigos__</div>
 						<div style="clear: both;"></div>
 					</div>
 					
@@ -91,12 +111,12 @@
 									<div id="enforcado6" class="enforcado"></div>
 								</div>
 							</div>
-							<div id="novo-jogo" class="botao" title="__MSG_novo_amigo__ (Ctrl + N)">__MSG_novo_amigo__</div>
+							<div id="novo-jogo" class="botao" title="__MSG_novo_amigo__ (Ctrl + E)">__MSG_novo_amigo__</div>
 						</div>
 						
 						<div id="nome"></div>
 						<div id="iniciar-jogo" class="botao">__MSG_iniciar_jogo__</div>
-						<div id="navegar" class="mensagem info">__MSG_navegar__</div>
+						<div id="navegar" class="botao">__MSG_navegar__</div>
 						<div style="clear: both;"></div>
 					</div>
 					
@@ -104,7 +124,7 @@
 					<div id="game-over">__MSG_game_over__</div>
 					<div id="letras-digitadas">__MSG_comece_digitar__</div>
 					
-					<a href="http://code.google.com/p/jogo-da-velha-opensocial" id="ajuda" target="_blank" title="__MSG_ajuda__">__MSG_ajuda__</a>
+					<a href="http://cleber.net.br/labs/jogo-da-forca" id="ajuda" target="_blank" title="__MSG_ajuda__">__MSG_ajuda__</a>
 					<div style="clear: both;"></div>
 				</div>
 			</div>

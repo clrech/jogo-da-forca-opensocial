@@ -1,12 +1,12 @@
 body {
-	background-image: url("img/body.png");
+	background-image: url("../img/body.png");
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 13px;
 	margin: 0;
 }
 
 #container {
-	background-image: url("img/fundo.png?1");
+	background-image: url("../img/fundo.png");
 	background-position: top center;
 	background-repeat: repeat-x;
 }
@@ -96,7 +96,7 @@ body {
 }
 
 #forca {
-	background-image: url("img/forca.png?1");
+	background-image: url("../img/forca.png");
 	background-repeat: no-repeat;
 	height: 223px;
 	width: 165px;
@@ -114,7 +114,7 @@ body {
 }
 
 #enforcado1 {
-	background-image: url("img/enforcado1.png");
+	background-image: url("../img/enforcado1.png");
 	height: 64px;
 	left: 75px;
 	top: 29px;
@@ -122,7 +122,7 @@ body {
 }
 
 #enforcado2 {
-	background-image: url("img/enforcado2.png");
+	background-image: url("../img/enforcado2.png");
 	height: 55px;
 	left: 104px;
 	top: 28px;
@@ -135,25 +135,25 @@ body {
 }
 
 #enforcado3 {
-	background-image: url("img/enforcado3.png");
+	background-image: url("../img/enforcado3.png");
 	left: 79px;
 	top: -27px;
 }
 
 #enforcado4 {
-	background-image: url("img/enforcado4.png");
+	background-image: url("../img/enforcado4.png");
 	left: 112px;
 	top: -58px;
 }
 
 #enforcado5 {
-	background-image: url("img/enforcado5.png");
+	background-image: url("../img/enforcado5.png");
 	left: 79px;
 	top: -46px;
 }
 
 #enforcado6 {
-	background-image: url("img/enforcado6.png");
+	background-image: url("../img/enforcado6.png");
 	left: 112px;
 	top: -77px;
 }
@@ -206,6 +206,7 @@ body {
 }
 
 #iniciar-jogo {
+	display: none;
 	font-size: 30px;
 	margin: auto;
 	text-shadow: 1px 1px 1px #000000;
@@ -216,11 +217,19 @@ body {
 
 #navegar {
 	display: none;
-	font-size: 16px;
-	margin-left: 160px;
+	font-size: 18px;
+	margin: auto;
 	margin-top: 50px;
-	padding: 20px;
+	padding: 20px 0;
 	text-align: center;
+	text-shadow: 1px 1px 1px #000000;
+	width: 440px;
+	-moz-box-shadow: 1px 1px 1px #000000;
+	-webkit-box-shadow: 1px 1px 1px #000000;
+}
+
+#navegar {
+	color: #FFFFFF;
 }
 
 #novo-jogo {
@@ -236,7 +245,7 @@ body {
 }
 
 .ajax-loader {
-	background-image: url("img/ajax-loader.gif?xx");
+	background-image: url("../img/ajax-loader.gif");
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -311,13 +320,18 @@ body {
 }
 
 #ir-para-jogo {
-	display: none;
 	margin: 20px auto;
 	width: 100px;
 }
 
+#ir-para-jogo a {
+	color: #FFFFFF;
+	font-size: 16px;
+	text-decoration: none;
+}
+
 #passaro {
-	background-image: url("img/passaro.gif");
+	background-image: url("../img/passaro.gif");
 	background-repeat: no-repeat;
 	display: none;
 	height: 70px;
