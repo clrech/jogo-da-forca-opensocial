@@ -3,6 +3,7 @@
 	<msg name="descricao">Tente adivinhar o nome dos seus amigos antes que eles sejam enviados para a forca. Você tem 6 tentativas. Vai encarar?</msg>
 	<msg name="iniciar_jogo">Clique aqui para<br />começar a jogar!</msg>
 	<msg name="pontos">Pontos:</msg>
+	<msg name="meus_pontos">Meus pontos:</msg>
 	<msg name="amigos_salvos">Amigos salvos:</msg>
 	<msg name="amigos_enforcados">Amigos enforcados:</msg>
 	<msg name="convidar_amigos">Convidar os amigos</msg>
@@ -21,8 +22,9 @@
 	<msg name="atividade_nao_criada">Não foi possível criar a atividade.</msg>
 	<msg name="email_titulo">Salve os seus amigos da forca!</msg>
 	<msg name="email_corpo">No <strong>Jogo da Forca</strong> você tem que tentar adivinhar o nome dos seus amigos antes que seja tarde demais. Vai encarar?</msg>
-	<msg name="atividade_titulo_sucesso">salvou <strong>${amigo}</strong> da forca</msg>
-	<msg name="atividade_titulo_game_over">enforcou <strong>${amigo}</strong></msg>
+	<msg name="atividade_titulo_sucesso"><span style="font-size: 13px; font-weight: bold;">salvou ${amigo} da forca</span></msg>
+	<msg name="atividade_titulo_game_over"><span style="font-size: 13px; font-weight: bold;">enforcou ${amigo}</span></msg>
+	<msg name="atividade_link">Tente você também salvar um amigo!</msg>
 	<msg name="navegar">Clique aqui para começar a jogar.<br /><em>Você deve ter o aplicativo instalado para jogar.</em></msg>
 	<msg name="erro_indefinido">Erro indefinido</msg>
 	<msg name="ir_para_jogo">Jogar</msg>
