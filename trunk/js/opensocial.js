@@ -150,23 +150,30 @@ jogo.carregarNovoAmigo = function() {
 
 jogo.atividade.criar = function(sucesso) {
 	log('jogo.atividade.criar(sucesso=' + sucesso + ')');
+	if (jogo.app[opensocial.getEnvironment().getDomain()]) {
+		$('#atividade #botao').show();
+	}
+	
 	var titulo = sucesso ? 'atividade_titulo_sucesso' : 'atividade_titulo_game_over';
-	var corpo = [ '<table><tr><td style="width: 100px;">',
-	              '<img src="' + (sucesso ? jogo.img.atividade.salvo : jogo.img.atividade.enforcado) + '" height="75" width="58">',
-	              '</td><td style="width: 180px;">',
-	              '<span style="font-size: large; font-weight: bold;">Pontos: ${pontuacao.pontos}</span></td><td>',
-	              '<span style="color: rgb(0, 0, 170); font-size: large;">Amigos salvos: ${pontuacao.salvos}</span><br>',
-	              '<span style="color: rgb(170, 0, 0); font-size: large;">Amigos enforcados: ${pontuacao.enforcados}</span>',
-	              '</td></tr></table>' ].join('');
-
+	var corpo = $('#atividade').html();
+	
+	var miniatura = jogo.amigo.getField(opensocial.Person.Field.THUMBNAIL_URL);
+	if (!miniatura) {
+		miniatura = gadgets.io.getProxyUrl(sucesso ? jogo.img.atividade.feliz : jogo.img.atividade.triste);
+	}
+	
+	corpo = corpo.replace('${amigo.miniatura}', '<img style="margin: 0pt; display: block; height: 36px; width: 36px;" src="' + miniatura + '">');
+	if (sucesso) {
+		corpo = corpo.replace('margin-left: 0px;', 'margin-left: 50px;');
+	}
+	
 	var parametrosTemplate = {};
 	parametrosTemplate.dono = jogo.dono.getDisplayName();
 	parametrosTemplate.amigo = jogo.amigo.getDisplayName();
 	parametrosTemplate.pontuacao = jogo.pontuacao;
 
 	var parametros = {};
-	parametros[opensocial.Activity.Field.BODY] = jogo.aplicarParametros(corpo);
-	parametros[opensocial.Activity.Field.BODY_ID] = corpo;
+	parametros[opensocial.Activity.Field.BODY] = jogo.aplicarParametros(corpo, { sucesso: sucesso });
 	parametros[opensocial.Activity.Field.STREAM_FAVICON_URL] = jogo.img.icone;
 	parametros[opensocial.Activity.Field.TEMPLATE_PARAMS] = parametrosTemplate;
 	parametros[opensocial.Activity.Field.TITLE] = jogo.aplicarParametros(prefs.getMsg(titulo), { link: true });
@@ -292,6 +299,8 @@ jogo.aplicarParametros = function(str, parametros) {
 	str = str.replace('${pontuacao.salvos}', jogo.pontuacao.salvos);
 	str = str.replace('${pontuacao.enforcados}', jogo.pontuacao.enforcados);
 	str = str.replace('${pontuacao.pontos}', jogo.pontuacao.pontos);
+	str = str.replace('app.link', jogo.app[opensocial.getEnvironment().getDomain()]);
+	str = str.replace('app.link', jogo.app[opensocial.getEnvironment().getDomain()]);
 
 	return str;
 }

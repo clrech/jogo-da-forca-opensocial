@@ -3,12 +3,17 @@ var prefs = new gadgets.Prefs();
 var jogo = {
 	URL : 'http://jogo-forca.appspot.com/',
 	MAX_TENTATIVAS : 6,
+	app : {},
 	img : {
 		icone : 'http://jogo-forca.appspot.com/favicon.ico',
 		forca : '',
 		atividade : {
-			salvo : 'http://jogo-forca.appspot.com/img/salvo.png',
-			enforcado : 'http://jogo-forca.appspot.com/img/enforcado.png'
+			corpo : 'http://jogo-forca.appspot.com/img/atividade/corpo.png',
+			forca1 : 'http://jogo-forca.appspot.com/img/atividade/forca1.png',
+			forca2 : 'http://jogo-forca.appspot.com/img/atividade/forca2.png',
+			triste : 'http://jogo-forca.appspot.com/img/atividade/triste.png',
+			feliz : 'http://jogo-forca.appspot.com/img/atividade/feliz.png',
+			logo : 'http://jogo-forca.appspot.com/img/atividade/logo.png'
 		}
 	},
 	dominio : {
@@ -38,6 +43,9 @@ var jogo = {
 	atividade : function() {
 	}
 };
+
+jogo.app[jogo.dominio.GOOGLE] = 'http://www.google.com/ig/directory?url=jogo-forca.appspot.com/gadget.xml';
+jogo.app[jogo.dominio.ORKUT] = '/Main#Application?appId=332749754900';
 
 jogo._load = function() {
 	var view = gadgets.views.getCurrentView().getName().toUpperCase();

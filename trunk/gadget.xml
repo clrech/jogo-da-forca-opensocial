@@ -41,6 +41,33 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="http://jogo-forca.appspot.com/js/jogo-da-forca.js"></script>
 		<script type="text/javascript" src="http://jogo-forca.appspot.com/js/opensocial.js"></script>
+		
+		<div id="atividade">
+			<div style="background-color: rgb(245, 253, 253);">
+				<div style="float: left; margin-left: 10px;">
+					<img style="margin: 0pt;" src="http://jogo-forca.appspot.com/img/atividade/forca1.png" height="120" width="40">
+				</div>
+				<div style="margin-top: 10px; float: right;">
+					<div style="float: left; margin-right: 15px; text-shadow: 1px 1px 8px rgb(136, 136, 136);">
+						<span style="font-weight: bold; font-size: 16px;">__MSG_meus_pontos__ ${pontuacao.pontos}</span><br><br>
+						<span style="color: rgb(0, 0, 170); font-size: 14px;">__MSG_amigos_enforcados__ ${pontuacao.enforcados}</span><br>
+						<span style="color: rgb(170, 0, 0); font-size: 14px;">__MSG_amigos_salvos__ ${pontuacao.salvos}</span>
+					</div>
+					<div id="botao" style="display: none; float: left;">
+						<a style="display: block; width: 150px; text-align: center; padding: 5px; background-color: rgb(64, 130, 174); color: rgb(255, 255, 255); border: 1px solid rgb(48, 113, 157); font-weight: bold; -moz-box-shadow: 1px 1px 1px rgb(0, 0, 0); -webkit-box-shadow: 1px 1px 1px rgb(0, 0, 0); text-align: center; text-shadow: 1px 1px 8px rgb(0, 0, 0); text-decoration: none; font-size: 14px; margin: 0pt 15px;" href="app.link">__MSG_atividade_link__</a>
+						<a style="display: block; text-align: center; margin-top: 5px;" href="app.link" title="__MSG_titulo__">
+							<img height="43" width="94" src="http://jogo-forca.appspot.com/img/atividade/logo.png" alt="__MSG_titulo__" style="border: medium none;">
+						</a>
+					</div>
+				</div>
+				<img src="http://jogo-forca.appspot.com/img/atividade/forca2.png" style="margin: 0pt; display: block;" height="26" width="46">
+				<div style="float: left; margin-left: 0px;">
+					${amigo.miniatura}
+					<img src="http://jogo-forca.appspot.com/img/atividade/corpo.png" style="margin: 0pt; display: block;" height="40" width="33">
+				</div>
+				<div style="border: 1px solid; background-color: rgb(71, 50, 40); height: 10px; margin-top: 85px;">&nbps;</div>
+			</div>
+		</div>
 	]]>
 	</Content>
 	
