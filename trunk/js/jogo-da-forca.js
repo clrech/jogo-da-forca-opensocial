@@ -1,8 +1,16 @@
 var prefs = new gadgets.Prefs();
 
 var jogo = {
+	URL : 'http://jogo-forca.appspot.com/',
 	MAX_TENTATIVAS : 6,
-	IMG_FORCA : '',
+	img : {
+		icone : 'http://jogo-forca.appspot.com/favicon.ico',
+		forca : '',
+		atividade : {
+			salvo : 'http://jogo-forca.appspot.com/img/salvo.png',
+			enforcado : 'http://jogo-forca.appspot.com/img/enforcado.png'
+		}
+	},
 	dominio : {
 		GOOGLE : 'google.com',
 		ORKUT : 'orkut.com'
@@ -34,10 +42,12 @@ var jogo = {
 jogo._load = function() {
 	var view = gadgets.views.getCurrentView().getName().toUpperCase();
 	if (view == gadgets.views.ViewType.HOME || view == gadgets.views.ViewType.PROFILE) {
-		$('#ir-para-jogo').click(function() {
-			gadgets.views.requestNavigateTo(new gadgets.views.View('canvas'));
-		});
-		$('#ir-para-jogo').show();
+		if ($('#ir-para-jogo a').size() == 1) {
+			$('#ir-para-jogo a').click(function() {
+				gadgets.views.requestNavigateTo(new gadgets.views.View('canvas'));
+			});
+			$('#ir-para-jogo a').show();
+		}
 		
 		var pontuacao = opensocial.data.DataContext.getDataSet('pontuacao');
 		if (pontuacao && pontuacao.code == 500) {
@@ -54,17 +64,14 @@ jogo._load = function() {
 			$('#convidar').show();
 		}
 		
-		$('#iniciar-jogo').click(function() {
-			$('#iniciar-jogo, #nome, #novo-jogo, #letras-digitadas').toggle('slow', function() {
-				gadgets.window.adjustHeight();
-			});
-		});
-		
-		jogo.IMG_FORCA = $('#enforcado1').css('backgroundImage');
+		jogo.img.forca = $('#enforcado1').css('backgroundImage');
 		window.setTimeout(jogo.animarPassaro, 60000);
 	}
 	
 	gadgets.window.adjustHeight();
+	
+	var ga = new _IG_GA('UA-19177153-2');
+	ga.reportPageview('/' + opensocial.getEnvironment().getDomain() + '/' + gadgets.views.getCurrentView().getName().toLowerCase());
 };
 
 jogo.desenharLetras = function(exibirLetras) {
@@ -106,12 +113,12 @@ jogo._keypress = function(evento) {
 	}
 
 	var tecla = String.fromCharCode(codigo).toUpperCase();
-	if (evento.ctrlKey && tecla == 'N') {
+	if (evento.ctrlKey && tecla == 'E') {
 		jogo.novoJogo();
 		return false;
 	}
 	
-	if (evento.ctrlKey && tecla == 'S') {
+	if (evento.ctrlKey && tecla == 'Q') {
 		jogo.compartilhar();
 		return false;
 	}
@@ -174,7 +181,7 @@ jogo.novoJogo = function() {
 	$('#game-over').hide();
 	$('.mensagem').hide();
 
-	$('#enforcado1').css('backgroundImage', jogo.IMG_FORCA);
+	$('#enforcado1').css('backgroundImage', jogo.img.forca);
 	gadgets.window.adjustHeight();
 };
 
@@ -215,6 +222,7 @@ jogo.pontos.exibir = function() {
 	
 	if (jogo.pontuacao.pontos && !isNaN(jogo.pontuacao.pontos)) {
 		$('#pontos .pontuacao').html(jogo.pontuacao.pontos);
+		$('#pontuacao').show();
 		$('#pontos').show();
 	}
 	
@@ -273,7 +281,7 @@ jogo.recarregar = function() {
 jogo.animarPassaro = function() {
 	var largura = $(window).width() - 70;
 	$("#passaro").show();
-	$("#passaro").animate({left: '+=' + largura + 'px'}, 10000, 'linear', function() {
+	$("#passaro").animate({ left: '+=' + largura + 'px' }, 10000, 'linear', function() {
 		$("#passaro").hide();
 		$("#passaro").css('left', 0);
 		window.setTimeout(jogo.animarPassaro, 60000);

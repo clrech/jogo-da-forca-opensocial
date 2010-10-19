@@ -1,4 +1,6 @@
 <messagebundle>
+	<msg name="titulo">Jogo da Forca</msg>
+	<msg name="descricao">Tente adivinhar o nome dos seus amigos antes que eles sejam enviados para a forca. Você tem 6 tentativas. Vai encarar?</msg>
 	<msg name="iniciar_jogo">Clique aqui para<br />começar a jogar!</msg>
 	<msg name="pontos">Pontos:</msg>
 	<msg name="amigos_salvos">Amigos salvos:</msg>
@@ -21,9 +23,7 @@
 	<msg name="email_corpo">No <strong>Jogo da Forca</strong> você tem que tentar adivinhar o nome dos seus amigos antes que seja tarde demais. Vai encarar?</msg>
 	<msg name="atividade_titulo_sucesso">salvou <strong>${amigo}</strong> da forca</msg>
 	<msg name="atividade_titulo_game_over">enforcou <strong>${amigo}</strong></msg>
-	<msg name="atividade_corpo_sucesso"><strong>Pontuação de ${dono}:</strong><br />${pontuacao.salvos} amigo(s) salvo(s)<br />${pontuacao.enforcados} amigo(s) enforcados(s)<br />Pontos totais: <strong>${pontuacao.pontos}</strong></msg>
-	<msg name="atividade_corpo_game_over"><strong>Pontuação de ${dono}:</strong><br />${pontuacao.salvos} amigo(s) salvo(s)<br />${pontuacao.enforcados} amigo(s) enforcados(s)<br />Pontos totais: <strong>${pontuacao.pontos}</strong></msg>
-	<msg name="navegar"><a href="#" title="Jogar a forca">Clique aqui</a> para começar a jogar.<br /><em>Você deve ter o aplicativo instalado para jogar.</em></msg>
+	<msg name="navegar">Clique aqui para começar a jogar.<br /><em>Você deve ter o aplicativo instalado para jogar.</em></msg>
 	<msg name="erro_indefinido">Erro indefinido</msg>
 	<msg name="ir_para_jogo">Jogar</msg>
 	<msg name=""></msg>
