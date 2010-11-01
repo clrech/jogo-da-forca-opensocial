@@ -37,6 +37,13 @@
 		<!-- ALm6fM2o2jHFdLh658igBsR4PpmyKqhAyVsKIL8leFIX0bQCYb9gCkl9XttoANGLKqBgMgou+aYQvGsLUleLPPw7rLXPJApqvpdjdbDhFft5dpVrqRLhbkikIsGcw3H0pzw2I2yANuXw -->
 		
 		<link href="http://jogo-forca.appspot.com/css/style.css" rel="stylesheet" type="text/css" />
+		<!--[if IE]>
+		<style type="text/css">
+			.letra {
+				width: 30px;
+			}
+		</style>
+		<![endif]-->
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="http://jogo-forca.appspot.com/js/jogo-da-forca.js"></script>

@@ -21,6 +21,7 @@ body {
 	margin: auto;
 	max-width: 835px;
 	min-height: 400px;
+	text-align: center;
 }
 
 #cabecalho {
@@ -103,6 +104,7 @@ body {
 	background-image: url("../img/forca.png");
 	background-repeat: no-repeat;
 	height: 223px;
+	text-align: left;
 	width: 165px;
 }
 
