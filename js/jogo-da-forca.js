@@ -99,7 +99,7 @@ jogo.desenharLetras = function(exibirLetras) {
 	for ( var i in palavras) {
 		palavra = palavras[i];
 		for ( var i = 0; i < palavra.length; i++) {
-			var letra = exibirLetras ? palavra[i].toUpperCase() : '';
+			var letra = exibirLetras ? palavra.charAt(i).toUpperCase() : '';
 			html += '<div class="letra letra' + cont + ' branco">' + letra + '</div>';
 			cont++;
 		}
@@ -145,7 +145,7 @@ jogo._keypress = function(evento) {
 
 	var encontrou = false;
 	for ( var i = 0; i < jogo.palavra.length; i++) {
-		if (jogo.palavra[i].toUpperCase() == tecla) {
+		if (jogo.palavra.charAt(i).toUpperCase() == tecla) {
 			$('.letra' + i).html(tecla);
 			$('.letra' + i).removeClass('branco');
 			$('.letra' + i).addClass('acerto');
@@ -339,5 +339,5 @@ function testar(tipo, campos) {
 	}
 }
 
-$(window).keypress(jogo._keypress);
+$(document).keypress(jogo._keypress);
 gadgets.util.registerOnLoadHandler(jogo._load);
