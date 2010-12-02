@@ -3,6 +3,7 @@ var prefs = new gadgets.Prefs();
 var jogo = {
 	URL : 'http://jogo-forca.appspot.com/',
 	MAX_TENTATIVAS : 6,
+	log : true,
 	app : {},
 	img : {
 		icone : 'http://jogo-forca.appspot.com/favicon.ico',
@@ -300,10 +301,8 @@ jogo.som = function(som) {
 }
 
 function log(mensagem) {
-	if (typeof console != 'undefined') {
+	if (jogo.log && typeof console != 'undefined') {
 		console.log(mensagem);
-	} else {
-		//alert((typeof mensagem == 'object') ? gadgets.json.stringify(mensagem) : mensagem);
 	}
 }
 
